@@ -1,0 +1,141 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.5;
+  color: #1a202c;
+  background: #f7fafc;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.app-header {
+  padding: 0.75rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+.app-header-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.app-title-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.app-logo {
+  border-radius: 4px;
+  object-fit: contain;
+}
+
+.app-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 3rem;
+}
+
+.tagline {
+  margin-top: -0.5rem;
+  font-size: 0.95rem;
+}
+
+.round-list,
+.game-list {
+  list-style: none;
+  padding: 0;
+}
+
+.round-list li,
+.game-list li {
+  margin: 0.5rem 0;
+}
+
+.file-hint {
+  font-size: 0.85rem;
+}
+
+.result-badge {
+  margin-left: 0.5rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.muted {
+  color: #718096;
+}
+
+.muted.small {
+  font-size: 0.9rem;
+}
+
+.panel {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+}
+
+.error-panel {
+  border-color: #feb2b2;
+  background: #fff5f5;
+}
+
+.board-wrap {
+  margin-top: 1.5rem;
+}
+
+.board-frame {
+  max-width: min(100%, 480px);
+  margin: 0 auto;
+}
+
+.board-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.board-controls button {
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e0;
+  background: #fff;
+  cursor: pointer;
+}
+
+.board-controls button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.move-counter {
+  font-size: 0.9rem;
+}
+
+.vs {
+  font-weight: 400;
+  color: #718096;
+}

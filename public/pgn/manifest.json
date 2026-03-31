@@ -1,0 +1,7 @@
+{
+  "tournamentName": "Demo Club Championship 2026",
+  "rounds": [
+    { "id": "1", "label": "Round 1", "file": "round_1.pgn" },
+    { "id": "2", "label": "Round 2", "file": "round_2.pgn" }
+  ]
+}
