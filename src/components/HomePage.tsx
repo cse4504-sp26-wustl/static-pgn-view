@@ -31,7 +31,7 @@ export function HomePage({ repository }: Props) {
     return (
       <div className="panel error-panel">
         <p>{error}</p>
-        <p className="muted">Ensure public/pgn/manifest.json exists and is valid JSON.</p>
+        <p className="muted">Ensure data branch files are named like round_1.pgn, round_2.pgn, etc.</p>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-/** Round entry from public/pgn/manifest.json (organizer-maintained). */
+/** Round entry derived from organizer-managed pgn data. */
 export type RoundManifestEntry = {
   id: string;
   label: string;
