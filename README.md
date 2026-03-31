@@ -39,10 +39,22 @@ From the repository root:
 
 ```bash
 npm install
+cp .env.example .env.local
 npm run dev
 ```
 
 Open the URL Vite prints (usually `http://localhost:5173/`).
+
+### Local testing for reviewers/professor
+
+Production on `main` uses environment values from `.github/workflows/deploy-github-pages.yml` during GitHub Actions build.
+Do not commit `.env.local`; it is only for local or PR-branch testing.
+
+The app reads round files from the `data` branch at runtime. For local testing:
+
+1. Copy `.env.example` to `.env.local`.
+2. Restart the dev server after changing env values.
+3. Verify `data` branch contains `pgn/round_<number>.pgn` files.
 
 ## Linking CLI-generated PGN
 
