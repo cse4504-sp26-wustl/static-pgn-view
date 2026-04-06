@@ -32,4 +32,27 @@ describe("parsePgnFile", () => {
     expect(parsePgnFile("")).toEqual([]);
     expect(parsePgnFile("   ")).toEqual([]);
   });
+
+  it("falls back to tag-only parsing when movetext is missing", () => {
+    const headerOnly = `
+[Event "T"]
+[White "A"]
+[Black "B"]
+[Result "0-1"]
+
+[Event "T"]
+[White "C"]
+[Black "D"]
+[Result "*"]
+`.trim();
+
+    const games = parsePgnFile(headerOnly);
+    expect(games).toHaveLength(2);
+    expect(games[0]!.white).toBe("A");
+    expect(games[0]!.black).toBe("B");
+    expect(games[0]!.result).toBe("0-1");
+    expect(games[1]!.white).toBe("C");
+    expect(games[1]!.black).toBe("D");
+    expect(games[1]!.result).toBe("*");
+  });
 });
