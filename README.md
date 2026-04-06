@@ -21,7 +21,7 @@ The website code lives on `main`, while tournament data is read at runtime from 
 1. Switch to the `data` branch.
 2. Add or update files under `pgn/` (for example `pgn/round_3.pgn`).
 3. Keep filenames in the pattern `round_<number>.pgn` so rounds can be discovered automatically.
-4. Commit and push to `data`. The live site reads from this branch automatically, so no website rebuild is required.
+4. Commit and push to `data`. A workflow auto-generates `pgn/index.json` for reliable discovery, and the live site updates without rebuilding `main`.
 
 PGN files should follow normal export conventions: tag pairs, a blank line, then movetext. Multiple games in one file are supported (separate games with a blank line between them).
 
