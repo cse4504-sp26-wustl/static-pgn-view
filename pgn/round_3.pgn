@@ -6,6 +6,8 @@
 [Black "David Lee"]
 [Result "0-1"]
 
+0-1
+
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
 [Date "2026.04.06"]
@@ -13,6 +15,8 @@
 [White "Kevin Zhang"]
 [Black "Daniel Kim"]
 [Result "1-0"]
+
+1-0
 
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
@@ -22,6 +26,8 @@
 [Black "Chris Johnson"]
 [Result "1/2-1/2"]
 
+1/2-1/2
+
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
 [Date "2026.04.06"]
@@ -29,6 +35,8 @@
 [White "Alex Rivera"]
 [Black "Jason Patel"]
 [Result "*"]
+
+*
 
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
@@ -38,6 +46,8 @@
 [Black "Brian Wong"]
 [Result "*"]
 
+*
+
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
 [Date "2026.04.06"]
@@ -45,6 +55,8 @@
 [White "Eric Adams"]
 [Black "Ethan Nguyen"]
 [Result "1/2-1/2"]
+
+1/2-1/2
 
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
@@ -54,6 +66,8 @@
 [Black "Justin Brown"]
 [Result "0-1"]
 
+0-1
+
 [Event "Tournament Director Demo"]
 [Site "Local Club"]
 [Date "2026.04.06"]
@@ -61,3 +75,5 @@
 [White "Tyler Scott"]
 [Black "Ryan Park"]
 [Result "*"]
+
+*
