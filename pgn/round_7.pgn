@@ -1,0 +1,59 @@
+[Event "Tournament Director Demo"]
+[Site "Local Club"]
+[Date "2026.04.07"]
+[Round "1"]
+[White "Liam O'Connor"]
+[Black "Jonas Berg"]
+[Result "1-0"]
+
+1. e4 e5 2. Nf3 Nc6 3. Bc4 Bc5 4. c3 Nf6 5. d3 d6 6. O-O O-O 7. Re1 a6 8. Bb3 Ba7 9. h3 h6 10. Nbd2 Re8 11. Nf1 Be6 12. Bc2 d5 13. exd5 Bxd5 14. Ng3 Qd7 15. Nh4 Rad8 16. Nhf5 Ne7 17. Rxe5 Nxf5 18. Rxf5 Be6 19. Rf3 Bd5 20. Rf5 Be6 21. Rf3 Bd5 22. Rxf6 gxf6 23. Bxh6 Be6 24. Qf3 Qd5 25. Ne4 Qf5 26. Nxf6+ Kh8 27. Qxf5 Bxf5 28. Nxe8 Rxe8 29. Kf1 Kh7 30. Bf4 c6 31. Re1 Rxe1+ 32. Kxe1 Kg6 33. Ke2 Be6 34. Bb3 Bxb3 35. axb3 Kf5 36. Be3 Bb8 37. g4+ Ke6 38. h4 f5 39. g5 f4 40. Bd4 Kf5 41. Kf3 Bd6 42. Bf6 b5 43. h5 Bf8 44. h6 Kg6 45. Kxf4 a5 46. Ke5 a4 47. bxa4 bxa4 48. Kd4 a3 49. bxa3 Bxa3 50. Kc4 Bc1 51. Kc5 Bd2 52. Kxc6 Bxg5 53. Bxg5 Kxg5 54. h7 1-0
+
+[Event "Tournament Director Demo"]
+[Site "Local Club"]
+[Date "2026.04.07"]
+[Round "1"]
+[White "Nikolai Sokolov"]
+[Black "Mateo Alvarez"]
+[Result "0-1"]
+
+1. d4 Nf6 2. c4 e6 3. Nc3 Bb4 4. e3 O-O 5. Bd3 d5 6. Nf3 c5 7. O-O Nc6 8. a3 Bxc3 9. bxc3 dxc4 10. Bxc4 Qc7 11. Bd3 e5 12. Nd2 Rd8 13. Bb2 b6 14. Rc1 Bb7 15. Qe2 Re8 16. Rfd1 Rad8 17. Bb5 exd4 18. cxd4 Nxd4 19. Bxd4 Rxd4 20. Bxe8 Rh4 21. Nf1 Qe5 22. Rd8 Qg5 23. Bc6+ Ne8 24. Rxe8# 0-1
+
+[Event "Tournament Director Demo"]
+[Site "Local Club"]
+[Date "2026.04.07"]
+[Round "1"]
+[White "Yuki Tanaka"]
+[Black "Rafael Costa"]
+[Result "1/2-1/2"]
+
+1. Nf3 d5 2. g3 c6 3. Bg2 Bg4 4. O-O Nd7 5. d3 e5 6. Nbd2 Ngf6 7. e4 Be7 8. h3 Bh5 9. Qe1 O-O 10. Nh4 Re8 11. Nf5 Bf8 12. g4 Bg6 13. Qe2 a5 14. a4 Qc7 15. b3 Bb4 16. Bb2 Rad8 17. Rad1 h6 18. Kh1 Nf8 19. Qf3 Ne6 20. Nxh6+ Kh7 21. Nf5 Nf4 22. Nb1 Bxf5 23. gxf5 Rh8 24. Bc1 Kg8 25. c3 Bc5 26. d4 dxe4 27. Qg3 exd4 28. Bxf4 Bd6 29. Bxd6 Qxd6 30. Qxd6 Rxd6 31. Rxd4 Rxd4 32. cxd4 Rh5 33. Re1 Rxf5 34. Kg1 Rf4 35. Nd2 e3 36. fxe3 Rf5 37. e4 Rf4 38. Re3 Nh5 39. Rf3 Rxf3 40. Bxf3 Nf4 41. h4 Ne6 42. d5 cxd5 43. exd5 Nc5 44. d6 Kf8 45. Nc4 Nxb3 46. Bxb7 Nc5 47. Bc6 f6 48. Nxa5 Kf7 49. Bd5+ Ke8 50. Bc6+ Kd8 51. Nb7+ Nxb7 52. Bxb7 Kd7 53. a5 Kxd6 54. a6 Kc7 55. Kf2 Kb8 56. Kf3 Ka7 57. Kf4 g6 58. Kg4 Kb8 59. h5 gxh5+ 60. Kxh5 1/2-1/2
+
+[Event "Tournament Director Demo"]
+[Site "Local Club"]
+[Date "2026.04.07"]
+[Round "1"]
+[White "Felix Müller"]
+[Black "Gabriel Dumont"]
+[Result "1-0"]
+
+1-0
+
+[Event "Tournament Director Demo"]
+[Site "Local Club"]
+[Date "2026.04.07"]
+[Round "1"]
+[White "Ahmed El-Sayed"]
+[Black "Marco De Luca"]
+[Result "0-1"]
+
+0-1
+
+[Event "Tournament Director Demo"]
+[Site "Local Club"]
+[Date "2026.04.07"]
+[Round "1"]
+[White "Andrei Popescu"]
+[Black "Thiago Santos"]
+[Result "1-0"]
+
+1-0
