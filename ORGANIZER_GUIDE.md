@@ -21,7 +21,7 @@ The website code lives on `main`, while tournament data is read at runtime from 
 1. Switch to the `data` branch.
 2. Add or update files under `pgn/` (for example `pgn/round_3.pgn`).
 3. Keep filenames in the pattern `round_<number>.pgn` so rounds can be discovered automatically.
-4. Commit and push to `data`. A workflow auto-generates `pgn/index.json` for reliable discovery, and the live site updates without rebuilding `main`.
+4. Commit and push to `data`. The live site reads from this branch automatically, so no website rebuild is required.
 
 PGN files should follow normal export conventions: tag pairs, a blank line, then movetext. Multiple games in one file are supported (separate games with a blank line between them).
 
@@ -39,22 +39,10 @@ From the repository root:
 
 ```bash
 npm install
-cp .env.example .env.local
 npm run dev
 ```
 
 Open the URL Vite prints (usually `http://localhost:5173/`).
-
-### Local testing for reviewers/professor
-
-Production on `main` uses environment values from `.github/workflows/deploy-github-pages.yml` during GitHub Actions build.
-Do not commit `.env.local`; it is only for local or PR-branch testing.
-
-The app reads round files from the `data` branch at runtime. For local testing:
-
-1. Copy `.env.example` to `.env.local`.
-2. Restart the dev server after changing env values.
-3. Verify `data` branch contains `pgn/round_<number>.pgn` files.
 
 ## Linking CLI-generated PGN
 

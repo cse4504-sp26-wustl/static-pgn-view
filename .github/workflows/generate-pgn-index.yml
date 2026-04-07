@@ -1,0 +1,39 @@
+name: Generate PGN index for data branch
+
+on:
+  push:
+    branches: [data]
+    paths:
+      - "pgn/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pgn-index
+  cancel-in-progress: true
+
+jobs:
+  index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout data branch
+        uses: actions/checkout@v4
+        with:
+          ref: data
+
+      - name: Build pgn/index.json
+        run: |
+          node -e "const fs=require('fs'); const path=require('path'); const dir='pgn'; const re=/^round_\\d+\\.pgn$/i; const files=(fs.existsSync(dir)?fs.readdirSync(dir):[]).filter(f=>re.test(f)).sort((a,b)=>{const na=parseInt(a.match(/\\d+/)[0],10); const nb=parseInt(b.match(/\\d+/)[0],10); return na-nb;}); fs.writeFileSync(path.join(dir,'index.json'), JSON.stringify({files}, null, 2) + '\n'); console.log('Wrote pgn/index.json with', files.length, 'files');"
+
+      - name: Commit index if changed
+        run: |
+          if git diff --quiet -- pgn/index.json; then
+            echo "No changes to pgn/index.json"
+            exit 0
+          fi
+          git add pgn/index.json
+          git commit -m "Update pgn index"
+          git push
+
