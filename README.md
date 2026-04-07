@@ -59,3 +59,7 @@ The app reads round files from the `data` branch at runtime. For local testing:
 ## Linking CLI-generated PGN
 
 The root TypeScript app can produce PGN via `PgnFormatter` / PGN use cases. Copy or export those `.pgn` files into `pgn/` on the `data` branch using `round_<number>.pgn` names, then push to publish new rounds without changing site code.
+
+## Production Flow
+
+The github workflow will automatically re-deploy every time something is pushed to main. All the user needs to do is push the PGN files to the data branch and the site will automatically update with the new data. 
