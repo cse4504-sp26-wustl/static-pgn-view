@@ -45,6 +45,8 @@ npm run dev
 
 Open the URL Vite prints (usually `http://localhost:5173/`).
 
+When `VITE_PGN_SOURCE_REPOSITORY` is set, the app loads PGNs from **`raw.githubusercontent.com`** (branch tip or commit in `index.json`), not jsDelivr, so replacing a file on `data` updates reliably after you push.
+
 ### Local testing for reviewers/professor
 
 Production on `main` uses environment values from `.github/workflows/deploy-github-pages.yml` during GitHub Actions build.
@@ -62,4 +64,6 @@ The root TypeScript app can produce PGN via `PgnFormatter` / PGN use cases. Copy
 
 ## Production Flow
 
-The github workflow will automatically re-deploy every time something is pushed to main. All the user needs to do is push the PGN files to the data branch and the site will automatically update with the new data. 
+The GitHub Pages workflow redeploys when you push to `main`. Tournament data updates when you push to the `data` branch.
+
+**Replacing an existing file (e.g. new `round_1.pgn`):** data is loaded from **raw.githubusercontent.com** (not jsDelivr). After you push to `data`, run the **Generate PGN index** workflow so `pgn/index.json` includes a new **`revision`** (commit SHA); the app then fetches each round from that commit path so content always matches Git. If `revision` is missing, it falls back to the branch tip, which still updates faster than a CDN cache.
