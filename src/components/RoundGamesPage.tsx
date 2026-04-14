@@ -22,16 +22,14 @@ export function RoundGamesPage({ repository }: Props) {
 
   useEffect(() => {
     let cancelled = false;
+    setError(null);
+    setGames([]);
+    setReady(false);
+    setManifest(null);
 
-    const run = async () => {
-      await Promise.resolve();
-      if (cancelled) return;
-      setError(null);
-      setGames([]);
-      setReady(false);
-      setManifest(null);
-      try {
-        const m = await repository.loadManifest();
+    repository
+      .loadManifest()
+      .then((m) => {
         if (cancelled) return;
         setManifest(m);
         const entry = m.rounds.find((r) => r.id === roundId);
@@ -39,17 +37,19 @@ export function RoundGamesPage({ repository }: Props) {
           setError(`Unknown round id: ${roundId ?? ""}`);
           return;
         }
-        const text = await repository.loadRoundPgnFile(entry.file);
+        return repository.loadRoundPgnFile(entry.file);
+      })
+      .then((text) => {
         if (cancelled) return;
+        if (text === undefined) return;
         setGames(parsePgnFile(text));
-      } catch (e: unknown) {
+      })
+      .catch((e: unknown) => {
         if (!cancelled) setError(e instanceof Error ? e.message : "Failed to load round");
-      } finally {
+      })
+      .finally(() => {
         if (!cancelled) setReady(true);
-      }
-    };
-
-    void run();
+      });
 
     return () => {
       cancelled = true;

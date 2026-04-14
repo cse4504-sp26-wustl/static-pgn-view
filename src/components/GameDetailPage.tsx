@@ -19,27 +19,29 @@ export function GameDetailPage({ repository }: Props) {
 
   useEffect(() => {
     let cancelled = false;
+    setError(null);
+    setGame(null);
+    setReady(false);
+    if (Number.isNaN(index) || index < 0) {
+      setError("Invalid game index.");
+      setReady(true);
+      return;
+    }
 
-    const run = async () => {
-      await Promise.resolve();
-      if (cancelled) return;
-      setError(null);
-      setGame(null);
-      setReady(false);
-      try {
-        if (Number.isNaN(index) || index < 0) {
-          setError("Invalid game index.");
-          return;
-        }
-        const m = await repository.loadManifest();
+    repository
+      .loadManifest()
+      .then((m) => {
         if (cancelled) return;
         const entry = m.rounds.find((r) => r.id === roundId);
         if (!entry) {
           setError(`Unknown round id: ${roundId ?? ""}`);
           return;
         }
-        const text = await repository.loadRoundPgnFile(entry.file);
+        return repository.loadRoundPgnFile(entry.file);
+      })
+      .then((text) => {
         if (cancelled) return;
+        if (text === undefined) return;
         const games = parsePgnFile(text);
         const g = games[index];
         if (!g) {
@@ -47,14 +49,13 @@ export function GameDetailPage({ repository }: Props) {
           return;
         }
         setGame(g);
-      } catch (e: unknown) {
+      })
+      .catch((e: unknown) => {
         if (!cancelled) setError(e instanceof Error ? e.message : "Failed to load game");
-      } finally {
+      })
+      .finally(() => {
         if (!cancelled) setReady(true);
-      }
-    };
-
-    void run();
+      });
 
     return () => {
       cancelled = true;

@@ -1,4 +1,0 @@
-{
-  "tournamentName": "Local demo",
-  "rounds": [{ "id": "1", "label": "Round 1", "file": "round_1.pgn" }]
-}
