@@ -20,27 +20,12 @@ type GitHubContentsItem = {
 
 type PgnIndex = {
   files: string[];
-  /** Git commit SHA written by the data-branch workflow. */
-  revision?: string;
 };
 
 const ROUND_FILE_PATTERN = /^round_(\d+)\.pgn$/i;
-const fetchNoStore: RequestInit = { cache: "no-store" };
 
 function normalizeDirectory(path: string): string {
   return path.replace(/^\/+/, "").replace(/\/+$/, "");
-}
-
-function parseOwnerRepo(full: string): [string, string] | null {
-  const parts = full.split("/").filter(Boolean);
-  if (parts.length !== 2) return null;
-  return [parts[0]!, parts[1]!];
-}
-
-/** https://raw.githubusercontent.com/<owner>/<repo>/<ref>/<path-under-repo> */
-function rawGithubFileUrl(owner: string, repo: string, gitRef: string, pathInRepo: string): string {
-  const rel = pathInRepo.replace(/^\/+/, "");
-  return `https://raw.githubusercontent.com/${owner}/${repo}/${gitRef}/${rel}`;
 }
 
 function createManifestFromRoundFiles(
@@ -97,8 +82,7 @@ function createManifestFromIndexFiles(files: string[], tournamentName: string): 
 
 /**
  * Fetches manifest and round files from a configured PGN base URL.
- * When `githubRepository` is set, uses `raw.githubusercontent.com` (not a CDN) so
- * replaced files under the same name are visible without stale edge caches.
+ * The base URL can point at this app's public assets or an external data branch.
  */
 export function createStaticPgnRepository({
   pgnBaseUrl,
@@ -109,44 +93,19 @@ export function createStaticPgnRepository({
 }: StaticPgnRepositoryOptions): PgnRepository {
   const pgnBase = pgnBaseUrl.endsWith("/") ? pgnBaseUrl : `${pgnBaseUrl}/`;
   const normalizedDirectory = normalizeDirectory(pgnDirectory);
-  let dataRevision: string | undefined;
-
-  function roundFileUrl(relativeFile: string): string {
-    const safe = relativeFile.replace(/^\/+/, "");
-    const parsed = githubRepository ? parseOwnerRepo(githubRepository) : null;
-    if (parsed) {
-      const [owner, repo] = parsed;
-      const ref = dataRevision && dataRevision.length > 0 ? dataRevision : dataBranch;
-      const pathInRepo = `${normalizedDirectory}/${safe}`;
-      return rawGithubFileUrl(owner, repo, ref, pathInRepo);
-    }
-    return new URL(safe, pgnBase).toString();
-  }
 
   return {
     async loadManifest() {
-      dataRevision = undefined;
-
       if (githubRepository && githubRepository.length > 0) {
-        const parsed = parseOwnerRepo(githubRepository);
-        if (!parsed) {
-          throw new Error(`Invalid VITE_PGN_SOURCE_REPOSITORY: ${githubRepository} (expected owner/repo)`);
-        }
-        const [owner, repo] = parsed;
-
-        const indexPath = `${normalizedDirectory}/index.json`;
-        const indexUrl = rawGithubFileUrl(owner, repo, dataBranch, indexPath);
-        const indexRes = await fetch(indexUrl, fetchNoStore);
+        // Prefer CDN-served index to avoid GitHub API rate limits / org restrictions.
+        const indexRes = await fetch(`${pgnBase}index.json`, { cache: "no-store" });
         if (indexRes.ok) {
           const index = (await indexRes.json()) as PgnIndex;
-          if (typeof index.revision === "string" && index.revision.length > 0) {
-            dataRevision = index.revision;
-          }
           return createManifestFromIndexFiles(index.files ?? [], tournamentName);
         }
 
         const listUrl = `https://api.github.com/repos/${githubRepository}/contents/${normalizedDirectory}?ref=${encodeURIComponent(dataBranch)}`;
-        const res = await fetch(listUrl, fetchNoStore);
+        const res = await fetch(listUrl);
         if (!res.ok) {
           throw new Error(
             `Failed to list PGN files from ${githubRepository}@${dataBranch}: ${res.status} ${res.statusText}. If this is a 403, add pgn/index.json on the data branch (or enable the index generator workflow).`,
@@ -156,7 +115,7 @@ export function createStaticPgnRepository({
         return createManifestFromRoundFiles(payload, tournamentName);
       }
 
-      const res = await fetch(`${pgnBase}manifest.json`, fetchNoStore);
+      const res = await fetch(`${pgnBase}manifest.json`);
       if (!res.ok) {
         throw new Error(
           `Failed to load manifest: ${res.status} ${res.statusText}. Configure VITE_PGN_SOURCE_REPOSITORY for upload-only mode.`,
@@ -165,9 +124,9 @@ export function createStaticPgnRepository({
       return (await res.json()) as PgnManifest;
     },
     async loadRoundPgnFile(relativeFile: string) {
-      const res = await fetch(roundFileUrl(relativeFile), fetchNoStore);
+      const safe = relativeFile.replace(/^\/+/, "");
+      const res = await fetch(`${pgnBase}${safe}`);
       if (!res.ok) {
-        const safe = relativeFile.replace(/^\/+/, "");
         throw new Error(`Failed to load ${safe}: ${res.status} ${res.statusText}`);
       }
       return res.text();

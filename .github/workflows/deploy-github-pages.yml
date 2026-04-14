@@ -31,7 +31,7 @@ jobs:
       - name: Install and build web
         env:
           VITE_BASE_PATH: /${{ github.event.repository.name }}/
-          VITE_PGN_BASE_URL: https://raw.githubusercontent.com/${{ github.repository }}/data/pgn/
+          VITE_PGN_BASE_URL: https://cdn.jsdelivr.net/gh/${{ github.repository }}@data/pgn/
           VITE_PGN_SOURCE_REPOSITORY: ${{ github.repository }}
           VITE_PGN_SOURCE_BRANCH: data
           VITE_PGN_SOURCE_DIRECTORY: pgn

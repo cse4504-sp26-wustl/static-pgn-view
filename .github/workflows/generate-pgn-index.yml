@@ -24,29 +24,8 @@ jobs:
           ref: data
 
       - name: Build pgn/index.json
-        env:
-          GITHUB_SHA: ${{ github.sha }}
         run: |
-          node <<'NODE'
-          const fs = require("fs");
-          const path = require("path");
-          const dir = "pgn";
-          const re = /^round_\d+\.pgn$/i;
-          const files = (fs.existsSync(dir) ? fs.readdirSync(dir) : [])
-            .filter((f) => re.test(f))
-            .sort((a, b) => {
-              const na = parseInt(a.match(/\d+/)[0], 10);
-              const nb = parseInt(b.match(/\d+/)[0], 10);
-              return na - nb;
-            });
-          const revision = process.env.GITHUB_SHA || "";
-          const payload = { files, revision };
-          fs.writeFileSync(
-            path.join(dir, "index.json"),
-            JSON.stringify(payload, null, 2) + "\n",
-          );
-          console.log("Wrote pgn/index.json", files.length, "files", revision.slice(0, 7));
-          NODE
+          node -e "const fs=require('fs'); const path=require('path'); const dir='pgn'; const re=/^round_\\d+\\.pgn$/i; const files=(fs.existsSync(dir)?fs.readdirSync(dir):[]).filter(f=>re.test(f)).sort((a,b)=>{const na=parseInt(a.match(/\\d+/)[0],10); const nb=parseInt(b.match(/\\d+/)[0],10); return na-nb;}); fs.writeFileSync(path.join(dir,'index.json'), JSON.stringify({files}, null, 2) + '\n'); console.log('Wrote pgn/index.json with', files.length, 'files');"
 
       - name: Commit index if changed
         run: |
