@@ -46,6 +46,9 @@ export function HomePage({ repository }: Props) {
       <p className="tagline" style={{ color: branding.accent }}>
         {branding.tagline}
       </p>
+      <p>
+        <Link to="/standings">View standings</Link>
+      </p>
       <h2>Rounds</h2>
       <ul className="round-list">
         {manifest.rounds.map((r) => (
