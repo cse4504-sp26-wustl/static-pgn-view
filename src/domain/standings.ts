@@ -32,6 +32,7 @@ export function createStandings(games: ParsedGame[]): StandingEntry[] {
     const white = getOrCreateStandingsEntry(table, game.white);
     const black = getOrCreateStandingsEntry(table, game.black);
 
+    // Includes all paired games from PGN files, including pending "*" results.
     white.gamesPlayed += 1;
     black.gamesPlayed += 1;
 

@@ -61,9 +61,23 @@ describe("StandingsPage", () => {
     const bob = rows.find((row) => within(row).queryByText("Bob"));
     expect(alice).toBeDefined();
     expect(bob).toBeDefined();
-    expect(alice).toHaveTextContent("Alice");
-    expect(alice).toHaveTextContent("1");
-    expect(bob).toHaveTextContent("Bob");
-    expect(bob).toHaveTextContent("1");
+    expect(within(alice!).getAllByRole("cell").map((cell) => cell.textContent?.trim())).toEqual([
+      "1",
+      "Alice",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+    ]);
+    expect(within(bob!).getAllByRole("cell").map((cell) => cell.textContent?.trim())).toEqual([
+      "4",
+      "Bob",
+      "0",
+      "0",
+      "0",
+      "1",
+      "1",
+    ]);
   });
 });
