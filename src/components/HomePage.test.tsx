@@ -28,6 +28,7 @@ describe("HomePage", () => {
     await waitFor(() => {
       expect(screen.getByRole("heading", { name: "Test Open" })).toBeInTheDocument();
     });
+    expect(screen.getByRole("link", { name: "View standings" })).toHaveAttribute("href", "/standings");
     expect(screen.getByRole("link", { name: "Round 1" })).toHaveAttribute("href", "/round/1");
     expect(screen.getByRole("link", { name: "Round 2" })).toHaveAttribute("href", "/round/2");
   });
