@@ -33,6 +33,24 @@ a:hover {
 .app-header-inner {
   max-width: 960px;
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.app-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.app-nav a:hover {
+  text-decoration: underline;
 }
 
 .app-title-link {
@@ -138,4 +156,65 @@ a:hover {
 .vs {
   font-weight: 400;
   color: #718096;
+}
+
+.player-search-form {
+  margin: 1.25rem 0 0.5rem;
+}
+
+.player-search-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.player-search-input {
+  width: 100%;
+  max-width: min(100%, 28rem);
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e0;
+  background: #fff;
+}
+
+.player-search-input:focus {
+  outline: 2px solid #2b6cb0;
+  outline-offset: 1px;
+}
+
+.player-search-status {
+  margin-top: 0.35rem;
+}
+
+.search-results-wrap {
+  margin-top: 1rem;
+}
+
+.search-results-list {
+  max-height: min(70vh, 36rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.search-result-round {
+  display: inline;
+}
+
+.search-load-more {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  min-height: 2.75rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e0;
+  background: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search-load-more:hover {
+  background: #edf2f7;
 }
