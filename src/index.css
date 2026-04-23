@@ -33,6 +33,10 @@ a:hover {
 .app-header-inner {
   max-width: 960px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .app-title-link {
@@ -46,6 +50,10 @@ a:hover {
 .app-logo {
   border-radius: 4px;
   object-fit: contain;
+}
+
+.app-header-nav-link {
+  font-weight: 600;
 }
 
 .app-main {
@@ -138,4 +146,35 @@ a:hover {
 .vs {
   font-weight: 400;
   color: #718096;
+}
+
+.standings-panel {
+  overflow-x: auto;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.standings-table th,
+.standings-table td {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.standings-table th:nth-child(1),
+.standings-table td:nth-child(1),
+.standings-table th:nth-child(3),
+.standings-table td:nth-child(3),
+.standings-table th:nth-child(4),
+.standings-table td:nth-child(4),
+.standings-table th:nth-child(5),
+.standings-table td:nth-child(5),
+.standings-table th:nth-child(6),
+.standings-table td:nth-child(6),
+.standings-table th:nth-child(7),
+.standings-table td:nth-child(7) {
+  text-align: center;
 }
