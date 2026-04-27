@@ -27,6 +27,12 @@ export function Layout() {
             ) : null}
             <span>{branding.siteTitle}</span>
           </Link>
+          <nav className="app-nav" aria-label="Main">
+            <Link to="/" style={{ color: branding.headerText }}>
+              Home
+            </Link>
+            <Link to="/search" style={{ color: branding.headerText }}>
+              Player search
           <nav className="app-header-nav" aria-label="Primary">
             <Link to="/standings" className="app-header-nav-link" style={{ color: branding.linkColor }}>
               View standings
