@@ -6,6 +6,7 @@ import { HomePage } from "./components/HomePage";
 import { RoundGamesPage } from "./components/RoundGamesPage";
 import { GameDetailPage } from "./components/GameDetailPage";
 import { PlayerSearchPage } from "./components/PlayerSearchPage";
+import { StandingsPage } from "./components/StandingsPage";
 
 export default function App() {
   const configuredPgnBase = import.meta.env.VITE_PGN_BASE_URL;
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage repository={repository} />} />
           <Route path="search" element={<PlayerSearchPage repository={repository} />} />
+          <Route path="standings" element={<StandingsPage repository={repository} />} />
           <Route path="round/:roundId" element={<RoundGamesPage repository={repository} />} />
           <Route path="round/:roundId/game/:gameIndex" element={<GameDetailPage repository={repository} />} />
           <Route path="*" element={<Navigate to="/" replace />} />

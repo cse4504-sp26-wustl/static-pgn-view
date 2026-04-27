@@ -22,3 +22,13 @@ export type ParsedGame = {
   /** Full game text (headers + movetext) for loadPgn. */
   rawPgn: string;
 };
+
+export type StandingEntry = {
+  player: string;
+  points: number;
+  gamesPlayed: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  pendingGames: number;
+};
