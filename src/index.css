@@ -51,9 +51,6 @@ a:hover {
 
 .app-nav a:hover {
   text-decoration: underline;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
 }
 
 .app-title-link {
@@ -224,6 +221,8 @@ a:hover {
 
 .search-load-more:hover {
   background: #edf2f7;
+}
+
 .standings-panel {
   overflow-x: auto;
 }
